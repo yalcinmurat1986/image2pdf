@@ -1,3 +1,4 @@
+import os
 import img2pdf
 import argparse
 
@@ -7,7 +8,7 @@ def img2pdf_converter(images, path, save = False):
     pdf_result = img2pdf.convert(images)
 
     if save:
-        with open("img2pdf.pdf","wb") as f:
+        with open(os.path.join(path,"img2pdf.pdf"),"w") as f:
             f.write()
 
 
