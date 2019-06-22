@@ -1,18 +1,22 @@
-import os
 import img2pdf
-import argparse
+import argparse, os
 
 
 def img2pdf_converter(images, path, save = False):
-
-    pdf_result = img2pdf.convert(images)
+    list_of_files = os.listdir(os.getcwd())
+    images = []
+    for item in list_of_files:
+        if item.endswith('.jpg'):
+            images.append(item)
+    sorted_images = sorted(images)
+    pdf = img2pdf.convert(sorted_images)
 
     if save:
-        with open(os.path.join(path,"img2pdf.pdf"),"w") as f:
-            f.write()
+        with open("img2pdf.pdf","wb") as f:
+            f.write(pdf)
 
 
-    return pdf_result
+    return pdf
 
 
 
